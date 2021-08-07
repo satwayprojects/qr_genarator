@@ -1,0 +1,71 @@
+{% extends 'base.html'%}
+{% block page %}
+
+<style>
+    .form-control {
+        font-size: large;
+        background-color: #232E48;
+        color: aliceblue;
+    }
+
+    .form-control:focus {
+        font-size: large;
+        background-color: #232E48;
+        color: aliceblue;
+    }
+    </style>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+            <div class="headingdiv">
+                <h3>IMEI GENERATOR</h3>
+            </div>
+
+            <div class="maindiv">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-xs-2"></div>
+                    <div class="col-sm-8 col-md-8 col-xs-8">
+                        <form method="POST" action="{% url 'generator:imei_generatepage' %}">
+                        {%csrf_token%}
+                        <div class="form-group row" style="padding-top: 3%;">
+                            <div class="col-sm-3 col-md-3 col-xs-3">
+                                <label for="uin"style="font-size:1.2rem;">Scan / Enter the <b>UIN</b></label>
+                            </div>
+
+                        
+                            <div class="col-sm-6 col-md-6 col-xs-6">
+                                <input class=" form-control " type="text" id="uin" name="uin" maxlength="17">
+                                {% if error_message %}
+                                <p class="">
+                                  <center style="color:red">{{ error_message }}</center>
+                                </p>
+                                {% endif %}
+                                
+                    
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-xs-3">
+                                <input type="submit"  class="btn btn-success btn-lg " value="Generate">
+                                
+                            </div>
+                            
+                        </div>
+                        </form>
+                        {% if success_message %}
+                        <p class="">
+                          <center style="color:green">{{ success_message }}</center>
+                        </p>
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-xs-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+ 
+</div>
+
+
+
+{% endblock page %}

@@ -1,0 +1,84 @@
+body{
+    background:#060818;
+    color: aliceblue;
+}
+.mainnav{
+    background-color:#191E3A;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+}
+li {
+    float: left;
+    font-size: large;
+    
+}
+  
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+li a:hover {
+  
+    background-color: #0E1726;
+    text-decoration: none;
+    color: white;
+}
+.active {
+  
+    background-color: #0E1726;
+    text-decoration: none;
+    color: white;
+    border-color: #888EA8;
+    border-style: solid;
+    border-width: 1px 0 0 0;
+    
+}
+.headingdiv{
+    
+    background-color: #0E1726;
+    margin-top: 15px;
+    padding:10px 10px 10px 30px;
+    border-color: #888EA8;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+}
+.maindiv{ 
+    background-color: #0E1726;
+    margin-top: 0;
+    padding:10px 20px 10px 20px;
+    border-color: #888EA8;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+}
+.editable{
+    font-size: large;
+    background-color: #232E48;
+    color: aliceblue;
+}
+.gpsname:disabled, .device_end:disabled{
+    font-size: large;
+    background-color: #0E1726;
+    color: aliceblue;
+}
+.form-control[readonly] {
+    font-size: large;
+    background-color: #0E1726;
+    color: aliceblue;
+}
+.editable:enabled{
+    font-size: large;
+    background-color: #232E48;
+    color: aliceblue;
+}
+
+

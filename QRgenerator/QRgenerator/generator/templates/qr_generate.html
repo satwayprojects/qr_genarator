@@ -1,0 +1,275 @@
+{% extends 'base.html'%}
+{% block page %}
+
+<style>
+  .form-control[readonly] {
+    font-size: large;
+    background-color: #0E1726;
+    color: aliceblue;
+  }
+</style>
+<div class="container-fluid ">
+  <div class="row ">
+    <div class="col-sm-12 col-md-12 col-xs-12 ">
+    
+      <div class="headingdiv ">
+        <div class="form-group row">
+        <div class="col-sm-6 col-md-6 col-xs-6">
+        <h3>QR GENERATOR</h3>
+        </div>
+        <div class="col-sm-6 col-md-6 col-xs-6">
+          <div class="form-group row">
+            <div class="col-sm-6 col-md-6 col-xs-6">
+              <label for="device_uin"> <h5>Last Device UIN</h5> </label>
+            </div>
+            <div class="col-sm-6 col-md-6 col-xs-6">
+            <input class="form-control" type="text" id="device_uin" name="device_uin" value= '{{ data.uin}}'readonly>
+          </div>
+          </div>
+          
+        </div>
+      </div>
+      </div>
+    
+
+    
+      <div class="maindiv">
+        <form method="POST" action="{% url 'generator:qr_generatepage' %}">
+          {%csrf_token%}
+          <div class="row ">
+            <div class="col-sm-2 col-md-2 col-xs-2"></div>
+
+            <div class="col-sm-4 col-md-4 col-xs-4">
+              <div class="form-group">
+                <label for="year"> VYOM</label>
+                <input class="gpsname form-control " type="text" id="vyom" name="vyom" value="SATWVYA" readonly>
+              </div>
+
+            </div>
+            <div class="col-sm-2 col-md-2 col-xs-2">
+              <div class="form-group">
+                <label for="year"> Choose Year</label>
+                <input class="form-control editable" type="number" id="year" name="year" min="20" max="99" step="1"
+                  value="21" required>
+              </div>
+            </div>
+            <div class="col-sm-2 col-md-2 col-xs-2">
+              <div class="form-group">
+                <label for="month">Choose Month</label>
+                <select class="form-control editable" id="month" name="month" required>
+                  <option value=''>--Select--</option>
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-2 col-md-2 col-xs-2">
+              <div class="form-group">
+                <label for="batch">Choose Batch</label>
+                <select class="form-control editable" id="batch" name="batch" required>
+                  <option value=''>--Select--</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-2 col-md-2 col-xs-2">
+
+            </div>
+            <div class="col-sm-3 col-md-3 col-xs-3">
+              <div class="form-group">
+                <label for="deviceStart">Device Start</label>
+                <input class="form-control editable" type="text" id="deviceStart" name="deviceStart" maxlength="5" value="{{number}}"
+                   required>
+              </div>
+            </div>
+            <div class="col-sm-1 col-md-1 col-xs-1">
+              <div class="form-group">
+                <label for="count">Count</label>
+                <input class="form-control editable" type="text" id="count" name="count" required>
+
+              </div>
+            </div>
+            <div class="col-sm-2 col-md-2 col-xs-2">
+              <div class="form-group">
+                <input type="submit" id= "submit" style="margin-top:30px;" class="btn btn-success btn-lg align-bottom"
+                  value="Generate">
+
+              </div>
+            </div>
+
+
+
+            {% if error_message %}
+            <p class="">
+              <center style="color:red">{{ error_message }}</center>
+            </p>
+            {% endif %}
+            <!-- {% if success_message %}
+            <p class="">
+              <center style="color:green">{{ success_message }}</center>
+            </p>
+            {% endif %} -->
+
+          </div>
+
+
+
+
+
+
+
+
+        </form>
+
+      </div>
+
+      <div class="maindiv">
+        <div class="row "style="padding-top: 10px;">
+          <div class="col-sm-2 col-md-2 col-xs-2">
+            <h4>QR generated</h4>
+
+          </div>
+          <div class="col-sm-1 col-md-1 col-xs-1"></div>
+          <div class="col-sm-2 col-md-2 col-xs-2">
+            <div class="form-group row">
+              <div class="col-sm-5 col-md-5 col-xs-5">
+                <label for="A_count"> Batch A</label>
+              </div>
+              <div class="col-sm-7 col-md-7 col-xs-7">
+              <input class="form-control" type="text" id="A_count" name="A_count" value="{{countA}}"readonly>
+            </div>
+            </div>
+            
+          </div>
+
+          <div class="col-sm-2 col-md-2 col-xs-2">
+            <div class="form-group row">
+              <div class="col-sm-5 col-md-5 col-xs-5">
+                <label for="B_count"> Batch B</label>
+              </div>
+              <div class="col-sm-7 col-md-7 col-xs-7">
+              <input class="form-control" type="text" id="B_count" name="B_count" value="{{countB}}" readonly>
+            </div>
+            </div>
+            
+          </div>
+
+          <div class="col-sm-2 col-md-2 col-xs-2">
+            <div class="form-group row">
+              <div class="col-sm-5 col-md-5 col-xs-5">
+                <label for="A_count"> Batch C</label>
+              </div>
+              <div class="col-sm-7 col-md-7 col-xs-7">
+              <input class="form-control" type="text" id="C_count" name="C_count" value="{{countC}}" readonly>
+            </div>
+            </div>
+            
+          </div>
+
+          <div class="col-sm-2 col-md-2 col-xs-2">
+            <div class="form-group row">
+              <div class="col-sm-5 col-md-5 col-xs-5">
+                <label for="total"> Total</label>
+              </div>
+              <div class="col-sm-7 col-md-7 col-xs-7">
+              <input class="form-control" type="text" id="total" name="total" value="{{total}}"readonly>
+            </div>
+            </div>
+            
+          </div>
+
+          <div class="col-sm-1 col-md-1 col-xs-1"></div>
+          
+        </div>
+
+      </div>
+      <div class="maindiv">
+        <div class="row "style="padding-top: 10px;">
+          <div class="col-sm-2 col-md-2 col-xs-2">
+            <h4 style="color: #FFFF57;">DUPLICATE UIN</h4>
+
+          </div>
+          
+          <div class="col-sm-1 col-md-1 col-xs-1"></div>
+          
+          
+          <div class="col-sm-6 col-md-6 col-xs-6">
+            <form method="POST" action="{% url 'generator:duplicate_generatepage' %}">
+              {%csrf_token%}
+            <div class="form-group row">
+              <div class="col-sm-5 col-md-3 col-xs-3">
+                <label for="d_uin">Enter the UIN</label>
+              </div>
+              <div class="col-sm-6 col-md-6 col-xs-6">
+                <input class="form-control editable" type="text" id="d_uin" name="d_uin" >
+              </div>
+              <div class="col-sm-2 col-md-2 col-xs-2">
+                
+                  <input type="submit" id= "uin_submit"  class="btn btn-success btn-lg align-bottom"
+                    value="Duplicate">
+  
+                
+            </div>
+            
+          </div>
+        </form>
+
+          
+
+         
+
+          <div class="col-sm-1 col-md-1 col-xs-1"></div>
+          
+        </div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- <script>
+  $(document).ready(function () {
+      $("#submit").click(function () {
+
+          var M = $('#month');
+          if (M.val() === '') {
+              alert("Please select the Month from the list and then proceed!");
+              $('#month').focus();
+
+              return false;
+          }
+          else return;
+
+          var B = $('#batch');
+          if (B.val() === '') {
+              alert("Please select the Batch from the list and then proceed!");
+              $('#batch').focus();
+
+              return false;
+          }
+          else return;
+          
+      });
+  });
+</script> -->
+{% if success_message %}
+    <script>alert('{{success_message}}')</script>  
+{% endif %}
+
+{% endblock page %}

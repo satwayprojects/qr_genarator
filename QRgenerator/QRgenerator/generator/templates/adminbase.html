@@ -1,0 +1,71 @@
+{% extends 'base.html'%}
+{% block page %}
+
+<style>
+    .form-control {
+        font-size: large;
+        background-color: #0E1726;
+        color: aliceblue;
+    }
+
+    .form-control:focus {
+        font-size: large;
+        background-color: #0E1726;
+        color: aliceblue;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: aliceblue;
+    }
+
+    a:focus {
+        text-decoration: none;
+    }
+    .form-control.active {
+  
+  
+  background-color: #232E48;
+  text-decoration: none;
+  color: white;
+  border-color: #888EA8;
+  border-style: solid;
+  border-width: 1px;
+  
+}
+</style>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+            <div class="headingdiv">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-xs-6">
+                        <h3>ADMIN</h3>
+                    </div>
+                    {% with suburl_name=request.resolver_match.url_name %}
+                    <div class="col-sm-2 col-md-2 col-xs-2">
+                        <a class=" form-control {% if suburl_name == 'adminpage' %}active{% endif %}"  href="{% url 'generator:adminpage' %}">Device Details</a>
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-xs-2">
+                        <a class=" form-control {% if suburl_name == 'registerpage' %}active{% endif %}" href="{% url 'generator:registerpage' %}">Staff Registration</a>
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-xs-2">
+                        <a class=" form-control {% if suburl_name == 'staffpage' %}active{% endif %}" href="{% url 'generator:staffpage' %}">Staff Details</a>
+                    </div>
+                    
+                    {% endwith %}
+                </div>
+            </div>
+            {% block adminpage %}
+
+            {% endblock adminpage%}
+            
+        </div>
+
+
+
+    </div>
+
+
+
+    {% endblock page %}

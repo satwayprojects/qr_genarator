@@ -1,0 +1,29 @@
+{% extends 'adminbase.html'%}
+{% block adminpage %}
+<div class="maindiv">
+    <div class="row">
+        <div class="col-sm-4 col-md-4 col-xs-4"></div>
+        <div class="col-sm-4 col-md-4 col-xs-4">
+            <center>
+                <h4>STAFF DETAILS</h4>
+            </center>
+
+            <table class="table table-dark">
+                
+                {% for d in data %}
+                <tr>
+                    <td>{{d.username}}</td>
+                    <td><a class= 'btn btn-warning' style="float: right;"onclick ="return confirm ('Are you sure to delete')"href="{% url 'generator:staffdeletepage' id=d.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+                
+
+
+        </div>
+        <div class="col-sm-4 col-md-4 col-xs-4"></div>
+        
+    </div>
+</div>
+
+{% endblock adminpage %}

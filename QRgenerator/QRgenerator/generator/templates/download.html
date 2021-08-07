@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{% block page %}
+{% load static %}
+
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+
+            <div class="headingdiv">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-xs-2">
+                <h3>DOWNLOAD</h3></div>
+                <div class="col-sm-8 col-md-8 col-xs-8">
+                <h5 style="padding-top:8px;"><a href="{% url 'generator:export_excelpage' %}">Click here to dowload the Excel File</a></h5></div>
+                <div class="col-sm-2 col-md-2 col-xs-2"></div>
+            </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock page %}

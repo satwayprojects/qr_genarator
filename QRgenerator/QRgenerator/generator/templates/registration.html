@@ -1,0 +1,98 @@
+{% extends 'adminbase.html'%}
+{% block adminpage %}
+<style>
+.helptext{
+    color:#888EA8;
+    text-align: justify;
+    font-style: italic;
+    font-size: small;
+    /* float:right; */
+}
+label {
+
+    margin-top: 1%;
+    text-align: left;
+    clear: both;
+    /* float: left; */
+    font-size: 100%;
+    
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    display: inline-block;
+    width: 40%;
+
+        
+    }
+span{
+        display: inline-block;
+        text-align:left;
+        color: white;
+    /* /* font-family:'Times New Roman', Times, serif ;
+    display: inline-block;
+    width: 40%; */
+    }  
+
+
+    p {
+    margin-top: 0;
+    margin-bottom: 1%;
+}
+
+.errorlist li{
+    font-size: small;
+    padding-left: 50%;
+    color: brown;
+    font-style: italic;
+    /* float:right; */
+    
+}
+input {
+    outline: 0;
+    background-color: #232E48;
+    color: white;
+    border: 1px solid #36415A;
+    height: 35px;
+    width: 250px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    align-self: center;
+}
+
+</style>
+<div class="maindiv">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-xs-3"></div>
+        <div class="col-sm-6 col-md-6 col-xs-6">
+            
+            <center>
+                <h4>REGISTRATION</h4>
+            </center>
+            <div class="form-group row" style="padding-top: 3%;">
+            <form method="POST" action="{% url 'generator:registerpage' %}">
+                {%csrf_token%}
+            
+                <center>
+                {{ form.as_p }}
+            
+            </center>
+            <center><input type="submit" id= "submit" style="margin-top:30px; width: 100px;height: 40px;" class="btn btn-success"
+                  value="Create"></center>
+                  {% if error_message %}
+            <p class="">
+              <center style="color:red">{{ error_message }}</center>
+            </p>
+            {% endif %}
+            {% if success_message %}
+            <p class="">
+              <center style="color:green">{{ success_message }}</center>
+            </p>
+            {% endif %}
+            <p style="color: red;">{{status}}</p>
+            </form>
+        </div>
+        </div>
+        <div class="col-sm-3 col-md-3 col-xs-3"></div>
+    </div>
+</div>
+
+{% endblock adminpage %}

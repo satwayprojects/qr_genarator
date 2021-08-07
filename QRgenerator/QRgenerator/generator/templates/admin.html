@@ -1,0 +1,87 @@
+{% extends 'adminbase.html'%}
+{% block adminpage %}
+<div class="maindiv">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-xs-2"></div>
+        <div class="col-sm-8 col-md-8 col-xs-8">
+            <form method="POST" action="{% url 'generator:adminpage' %}">
+                {%csrf_token%}
+            <div class="form-group row" style="padding-top: 3%;">
+                <div class="col-sm-3 col-md-3 col-xs-3">
+                    <label for="uin" style="font-size:1.2rem;">Scan / Enter the <b>UIN</b></label>
+                </div>
+
+
+                <div class="col-sm-6 col-md-6 col-xs-6">
+                    <input class=" form-control " type="text" id="uin" name="uin" maxlength="17">
+                    {% if error_message %}
+                    <p class="">
+                        <center style="color:red">{{ error_message }}</center>
+                    </p>
+                    {% endif %}
+
+                </div>
+                <div class="col-sm-3 col-md-3 col-xs-3">
+                    <input type="submit" class="btn btn-success btn-lg " value="View">
+                </div>
+
+            </div>
+            </form>
+
+        </div>
+        <div class="col-sm-2 col-md-2 col-xs-2"></div>
+        
+    </div>
+</div>
+
+
+<div class="maindiv">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-xs-2"></div>
+        <div class="col-sm-8 col-md-8 col-xs-8">
+
+            <div class="form-group row" style="padding-top: 3%;">
+                <div class="col-sm-2 col-md-2 col-xs-2"></div>
+                <div class="col-sm-8 col-md-8 col-xs-8">
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-md-4 col-xs-4">
+                        <label for="imei">IMEI</label></div>
+                        <div class="col-sm-8 col-md-8 col-xs-8">
+                        <input type="text" class="form-control password_field" name="imei" id="imei" value="{{data.imei}}" >
+                    </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-md-4 col-xs-4">
+                        <label for="uin">UIN</label></div>
+                        <div class="col-sm-8 col-md-8 col-xs-8">
+                        <input type="text" class="form-control password_field" name="uin" id="uin" value="{{data.uin_id}}" >
+                    </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-md-4 col-xs-4">
+                        <label for="iccid">ICCID</label></div>
+                        <div class="col-sm-8 col-md-8 col-xs-8">
+                        <input type="text" class="form-control password_field" name="iccid" id="iccid" value="{{data.iccid}}">
+                    </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-md-4 col-xs-4">
+                        <label for="added_by">Added by</label></div>
+                        <div class="col-sm-8 col-md-8 col-xs-8">
+                        <input type="text" class="form-control password_field" name="added_by" id="added_by" value="{{data.added_by}}" >
+                    </div>
+                    </div>
+                <div class="col-sm-2 col-md-2 col-xs-2"></div>
+
+            </div>
+           
+
+        </div>
+        <div class="col-sm-2 col-md-2 col-xs-2"></div>
+        
+    </div>
+</div>
+
+
+{%  endblock adminpage%}
